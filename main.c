@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include "garfo.h"
 
+//teste
+
 int main() {
     Grafo *g = le_grafo_arquivo("grafo.txt", 0); // 0 = matriz
 
