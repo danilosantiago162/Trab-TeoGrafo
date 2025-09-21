@@ -1,0 +1,6 @@
+BFS a partir do vertice 1
+Vertice 1: pai = -1, nivel = 0
+Vertice 2: pai = 1, nivel = 1
+Vertice 3: pai = 5, nivel = 2
+Vertice 4: pai = 5, nivel = 2
+Vertice 5: pai = 1, nivel = 1
