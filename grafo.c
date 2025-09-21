@@ -292,6 +292,58 @@ int distancia(Grafo *g, int u, int v) {
     free(dist);
     return d;
 }
+int dfs_visit_cc(Grafo *g, int u, int *visitado) {
+    visitado[u] = 1;
+    int count = 1;
+
+    if (g->representacao == 0) { // Matriz de adjacência
+        for (int v = 0; v < g->n; v++) {
+            if (g->matriz[u][v] && !visitado[v]) {
+                count += dfs_visit_cc(g, v, visitado);
+            }
+        }
+    } else { // Lista de adjacência
+        for (int i = 0; i < g->grau[u]; i++) {
+            int v = g->lista[u][i];
+            if (!visitado[v]) {
+                count += dfs_visit_cc(g, v, visitado);
+            }
+        }
+    }
+    return count;
+}
+void componentes_conexas(Grafo *g, const char *saida) {
+    FILE *f = fopen(saida, "w");
+    if (!f) {
+        perror("Erro ao salvar componentes conexas");
+        return;
+    }
+
+    int *visitado = (int*) calloc(g->n, sizeof(int));
+    int num_componentes = 0;
+    int maior_componente = 0;
+    int menor_componente = g->n + 1; // Inicializa com um valor maior que o possível
+
+    fprintf(f, "Componentes Conexas:\n");
+    printf("Componentes Conexas:\n");
+
+    for (int i = 0; i < g->n; i++) {
+        if (!visitado[i]) {
+            num_componentes++;
+            int tamanho_comp = dfs_visit_cc(g, i, visitado);
+
+            fprintf(f, "Componente %d: %d vertices\n", num_componentes, tamanho_comp);
+            printf("Componente %d: %d vertices\n", num_componentes, tamanho_comp);
+
+            if (tamanho_comp > maior_componente) {
+                maior_componente = tamanho_comp;
+            }
+            if (tamanho_comp < menor_componente) {
+                menor_componente = tamanho_comp;
+            }
+        }
+    }
+}
 // (aqui ainda faltam bfs, dfs, distância, diâmetro e componentes conexas...)
 
 void libera_grafo(Grafo* g) {
