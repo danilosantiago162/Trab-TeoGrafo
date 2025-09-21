@@ -10,10 +10,14 @@ int main() {
         printf("Erro ao ler grafo\n");
         return 1;
     }
-    int dist = distancia(g, 1, 3);
+    int vertice_u = 1;
+    int vertice_v = 3;
+    
+    // Chama a função distancia usando as variáveis
+    int dist = distancia(g, vertice_u, vertice_v);
 
-    // Print the result to the terminal
-    printf("A distância entre os vértices 1 e 3 é: %d\n", dist);
+    // Imprime o resultado, usando as variáveis para mostrar de onde a distância foi calculada
+    printf("A distancia entre os vertices %d e %d:\n%d\n", vertice_u, vertice_v, dist);
     componentes_conexas(g, "componentes_saida.txt");
 
     libera_grafo(g);
