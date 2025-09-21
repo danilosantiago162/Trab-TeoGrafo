@@ -4,6 +4,8 @@
 #include <limits.h>
 #include "garfo.h"
 
+//teste
+
 // ---------- Criação ----------
 Grafo* cria_grafo(int n, int representacao) {
     Grafo *g = malloc(sizeof(Grafo));   // ✅ cria um ponteiro para struct

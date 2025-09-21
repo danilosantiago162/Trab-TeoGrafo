@@ -1,6 +1,8 @@
 #ifndef GRAFO_H
 #define GRAFO_H
 
+//teste
+
 typedef struct Grafo {
     int n;              // número de vértices
     int m;              // número de arestas
