@@ -1,3 +1,532 @@
+# PARTE 3 — CINÉTICA QUÍMICA
+
+## 3.1 Por que estudamos isto?
+
+Cinética química responde: **quão rápido a reação acontece, e por qual caminho?**
+
+A termodinâmica diz se uma reação é possível (ΔG < 0). Cinética diz se ela é **prática**. Mais importante: cinética revela o **mecanismo** — a sequência microscópica de etapas elementares por onde a reação realmente passa.
+
+A diferença entre termodinâmica e cinética é o que separa "diamante é instável em relação a grafite" (verdade termodinâmica) de "diamantes são para sempre" (verdade cinética: a velocidade de conversão é desprezível).
+
+---
+
+## 3.2 Velocidade de reação — definições
+
+Considere a reação genérica: **A + B → C + D**
+
+A **velocidade média** entre dois instantes é:
+
+$$v_{média} = -\frac{\Delta[A]}{\Delta t} = -\frac{[A]_2 - [A]_1}{t_2 - t_1}$$
+
+(O sinal negativo é convenção, para que velocidade seja sempre positiva: [A] está diminuindo.)
+
+A **velocidade instantânea** num instante t é o limite quando Δt → 0:
+
+$$v_{instantânea} = -\frac{d[A]}{dt}$$
+
+**Geometricamente:** velocidade instantânea = inclinação da reta tangente à curva [A] vs t no ponto considerado. Velocidade média = inclinação da secante.
+
+**Velocidade inicial (v₀):** velocidade instantânea em t = 0. É calculada extrapolando a reta tangente no ponto inicial até cruzar o eixo x. **É a velocidade mais usada em estudos cinéticos**, porque [reagentes] = [reagentes]₀ é conhecida com precisão.
+
+### Estequiometria das velocidades
+
+Para a reação genérica: **a A + b B → c C + d D**
+
+A velocidade da reação é definida (de modo único, independente da espécie):
+
+$$v = -\frac{1}{a}\frac{d[A]}{dt} = -\frac{1}{b}\frac{d[B]}{dt} = +\frac{1}{c}\frac{d[C]}{dt} = +\frac{1}{d}\frac{d[D]}{dt}$$
+
+**Exemplo:** A + 2B → 3C
+$$v = -\frac{d[A]}{dt} = -\frac{1}{2}\frac{d[B]}{dt} = +\frac{1}{3}\frac{d[C]}{dt}$$
+
+Note que B é consumido **2 vezes mais rápido** do que A (em concentração/tempo), e C é formado 3 vezes mais rápido. Os coeficientes na definição garantem que **a velocidade da reação tenha um valor único**.
+
+---
+
+## 3.3 Lei de velocidade — equação experimental
+
+Para a maioria das reações, a velocidade depende das concentrações dos reagentes elevadas a expoentes que **devem ser determinados experimentalmente**:
+
+$$v = k \cdot [A]^m \cdot [B]^n$$
+
+- **k:** constante de velocidade. Depende de T (e do mecanismo), **não** da concentração.
+- **m, n:** ordens parciais (em relação a A e B).
+- **m + n:** ordem global da reação.
+
+⚠️ **ATENÇÃO ESSENCIAL:** os expoentes **NÃO** são (em geral) os coeficientes estequiométricos. Devem ser obtidos por **experimento**. Só coincidem com os coeficientes em **etapas elementares** (reações em uma única colisão).
+
+### Por que isso?
+
+Considere a reação global: A + B → C + D. Se ela ocorre em duas etapas:
+- Etapa 1 (lenta): A → I
+- Etapa 2 (rápida): I + B → C + D
+
+A velocidade global é determinada pela etapa lenta. v = k·[A]¹·[B]⁰. A reação é **de 1ª ordem em A, ordem zero em B**, mesmo que B apareça na equação global.
+
+---
+
+## 3.4 Determinação experimental da ordem — método das velocidades iniciais
+
+**Estratégia:** mantenha [B] fixo e varie [A]; determine como v varia. Depois, mantenha [A] fixo e varie [B].
+
+### Exemplo trabalhado
+
+| Exp | [A]₀ (mol/L) | [B]₀ (mol/L) | v₀ (mol/L·min) |
+|---|---|---|---|
+| 1 | 0,346 | 0,369 | 0,123 |
+| 2 | 0,692 | 0,369 | 0,492 |
+| 3 | 0,346 | 0,738 | 0,123 |
+
+**Comparando 1 e 2** ([B] fixo, [A] dobra):
+$$\frac{v_2}{v_1} = \left(\frac{[A]_2}{[A]_1}\right)^m = \left(\frac{0{,}692}{0{,}346}\right)^m = (2)^m$$
+
+$$\frac{0{,}492}{0{,}123} = 4 = 2^m \implies m = 2$$
+
+**Comparando 1 e 3** ([A] fixo, [B] dobra):
+$$\frac{v_3}{v_1} = (2)^n$$
+
+$$\frac{0{,}123}{0{,}123} = 1 = 2^n \implies n = 0$$
+
+**Lei de velocidade:** v = k · [A]² · [B]⁰ = **k · [A]²**
+
+**Cálculo de k:** v₁ = k · (0,346)² → k = 0,123 / 0,1197 ≈ **1,03 L/(mol·min)** (note as unidades!)
+
+### Ordem e a unidade de k
+
+A unidade de k depende da ordem global:
+
+| Ordem global | Unidade de k |
+|---|---|
+| 0 | mol·L⁻¹·s⁻¹ |
+| 1 | s⁻¹ |
+| 2 | L·mol⁻¹·s⁻¹ |
+| 3 | L²·mol⁻²·s⁻¹ |
+
+**Truque:** k tem unidade tal que v · L⁻ⁿ⁺¹ · molⁿ⁻¹ feche em mol/(L·s). Ou simplesmente verifique que [v] = mol/(L·s) sempre.
+
+---
+
+## 3.5 Reações de 1ª ordem
+
+Para v = k · [A]:
+
+$$-\frac{d[A]}{dt} = k[A]$$
+
+Integrando (separação de variáveis):
+
+$$\boxed{\ln[A] = \ln[A]_0 - kt}$$
+
+Ou equivalente:
+
+$$[A] = [A]_0 \cdot e^{-kt}$$
+
+**Características gráficas:**
+- Gráfico de **ln[A] vs t**: linha reta com inclinação **–k**. Esta é a marca registrada de 1ª ordem!
+- Gráfico de [A] vs t: curva exponencial decrescente.
+
+### Tempo de meia-vida (t₁/₂)
+
+Tempo necessário para [A] cair à metade do valor inicial.
+
+Substituindo [A] = [A]₀/2 na equação integrada:
+$$\ln\frac{[A]_0/2}{[A]_0} = -k \cdot t_{1/2}$$
+$$\ln(0{,}5) = -k \cdot t_{1/2}$$
+$$\boxed{t_{1/2} = \frac{0{,}693}{k}}$$
+
+⚠️ **Para 1ª ordem, t₁/₂ é INDEPENDENTE da concentração inicial!** Esta é uma propriedade especial e o teste mais simples para identificar 1ª ordem: se t₁/₂ é constante ao longo do decaimento, a reação é de 1ª ordem.
+
+### Exemplos clássicos de 1ª ordem
+- Decomposições radioativas (todas).
+- Decomposição do N₂O₅ em NO₂ + ½ O₂.
+- Isomerizações simples.
+- Hidrólise enzimática em condições diluídas.
+
+### Exemplo trabalhado: cálculo de k para 1ª ordem
+
+> *Para uma reação de 1ª ordem A → B, a concentração de A cai de 0,33 para 0,14 mol/L em 47 s. Calcule k.*
+
+Use ln[A] = ln[A]₀ – kt:
+ln(0,14) – ln(0,33) = –k · 47
+–1,966 – (–1,109) = –47k
+–0,857 = –47k
+**k = 0,01823 s⁻¹ ≈ 1,8 × 10⁻² s⁻¹**
+
+---
+
+## 3.6 Reações de 2ª ordem
+
+Para v = k · [A]²:
+
+$$-\frac{d[A]}{dt} = k[A]^2$$
+
+Integrando:
+
+$$\boxed{\frac{1}{[A]} = \frac{1}{[A]_0} + kt}$$
+
+**Características gráficas:**
+- Gráfico de **1/[A] vs t**: linha reta com inclinação **+k**.
+
+### Tempo de meia-vida para 2ª ordem
+
+$$t_{1/2} = \frac{1}{k \cdot [A]_0}$$
+
+**Note:** depende de [A]₀! A meia-vida **dobra** cada vez que [A] cai à metade.
+
+### Resumo gráfico para identificar a ordem
+
+| Ordem | Linearizar... | Inclinação |
+|---|---|---|
+| 0 | [A] vs t | –k |
+| 1 | ln[A] vs t | –k |
+| 2 | 1/[A] vs t | +k |
+
+**Estratégia experimental:** mede-se [A] em vários tempos. Faz-se três gráficos. O que sair linear indica a ordem.
+
+---
+
+## 3.7 Teoria das Colisões
+
+Para que duas moléculas reajam, elas precisam:
+
+1. **Colidir.** Frequência de colisões Z é proporcional a [A]·[B] (mais moléculas = mais colisões).
+2. **Ter energia suficiente.** Apenas colisões com energia ≥ **energia de ativação Ea** são efetivas. A fração de moléculas com E ≥ Ea segue a distribuição de Maxwell-Boltzmann: e^(–Ea/RT).
+3. **Ter geometria correta.** Mesmo com energia, as moléculas precisam colidir na orientação certa. Isso é representado pelo **fator estérico p** (entre 0 e 1).
+
+**Velocidade da etapa elementar:**
+
+$$v = p \cdot Z \cdot e^{-Ea/RT}$$
+
+Comparando com v = k·[A]·[B] (etapa elementar bimolecular A+B→produto):
+
+$$k = p \cdot Z_0 \cdot e^{-Ea/RT}$$
+
+onde Z₀ contém o fator de proporcionalidade da frequência de colisões. Definindo **A = p·Z₀** (fator pré-exponencial ou "fator de frequência"), chegamos a:
+
+$$\boxed{k = A \cdot e^{-Ea/RT}}$$
+
+Esta é a **Equação de Arrhenius**.
+
+### Fatores estéricos típicos
+
+| Reação | p |
+|---|---|
+| CH₄ + H → CH₃ + H₂ | 0,5 |
+| H₂ + I₂ → 2 HI | 0,2 |
+| 2 NO₂ → 2 NO + O₂ | 0,06 |
+| CO + O₂ → CO₂ + O | 0,004 |
+| 2 ClO → Cl₂ + O₂ | 0,002 |
+
+Reações com geometria mais restritiva (mais átomos a alinhar) têm p menor.
+
+---
+
+## 3.8 Equação de Arrhenius — forma logarítmica
+
+Tomando ln dos dois lados:
+
+$$\ln k = \ln A - \frac{Ea}{RT}$$
+
+**Gráfico de ln k vs 1/T:** linha reta com inclinação **–Ea/R**.
+
+R = 8,314 J/(K·mol). Convertendo Ea de kJ/mol para J/mol: multiplique por 1.000.
+
+### Forma de duas temperaturas (eliminando A)
+
+$$\ln\frac{k_2}{k_1} = -\frac{Ea}{R}\left(\frac{1}{T_2} - \frac{1}{T_1}\right) = \frac{Ea}{R}\left(\frac{1}{T_1} - \frac{1}{T_2}\right)$$
+
+Útil para calcular Ea conhecendo k em duas temperaturas, ou prever k em uma nova T.
+
+### Exemplo trabalhado
+
+> *A decomposição do N₂O₅ tem k = 7,86×10⁻⁷ s⁻¹ a 0 °C e k = 4,87×10⁻³ s⁻¹ a 65 °C. Calcule Ea.*
+
+T₁ = 273,15 K; T₂ = 338,15 K
+
+$$\ln\frac{4{,}87 \times 10^{-3}}{7{,}86 \times 10^{-7}} = \frac{Ea}{8{,}314}\left(\frac{1}{273{,}15} - \frac{1}{338{,}15}\right)$$
+
+$$\ln(6196) = 8{,}73$$
+
+$$\frac{1}{273{,}15} - \frac{1}{338{,}15} = 0{,}003661 - 0{,}002957 = 7{,}04 \times 10^{-4} \text{ K}^{-1}$$
+
+$$8{,}73 = \frac{Ea}{8{,}314} \cdot 7{,}04 \times 10^{-4}$$
+
+$$Ea = \frac{8{,}73 \times 8{,}314}{7{,}04 \times 10^{-4}} = 1{,}03 \times 10^5 \text{ J/mol} = \boxed{103 \text{ kJ/mol}}$$
+
+---
+
+## 3.9 Energia de Ativação — interpretação
+
+Imagine o "perfil de reação": eixo x = coordenada de reação (uma medida do progresso); eixo y = energia potencial.
+
+```
+                  ‡ (estado de transição)
+                   /\
+                  /  \
+       Ea_d ---->/    \    ----> Ea_inv
+                /      \
+               /  ΔH    \
+   Reagentes--/----------\----- (se exo)
+                          \____ Produtos
+```
+
+- **Ea_direta:** energia que os reagentes precisam atingir para chegar ao **estado de transição** (também chamado complexo ativado, denotado [‡]).
+- **Ea_inversa:** energia que os produtos precisam atingir para chegar ao mesmo estado de transição, mas vindo do outro lado.
+- **ΔH_reação = Ea_direta – Ea_inversa.** Se a reação é exotérmica, Ea_direta < Ea_inversa.
+
+### Efeito da temperatura
+
+Aumentar T faz a distribuição de Maxwell-Boltzmann se "espalhar" para energias maiores, aumentando significativamente a fração de moléculas com E ≥ Ea. Como essa fração entra exponencialmente em k, **um aumento modesto de T pode dobrar ou triplicar k** (regra de bolso: muitas reações dobram k a cada aumento de 10 °C, embora isso dependa de Ea).
+
+### Exotérmica vs endotérmica
+
+- **Exotérmica:** produtos abaixo dos reagentes em energia. ΔH < 0. Ea_inversa > Ea_direta.
+- **Endotérmica:** produtos acima. ΔH > 0. Ea_inversa < Ea_direta.
+
+---
+
+## 3.10 Catálise
+
+**Catalisador:** substância que **acelera a reação sem ser consumida**. Não altera ΔH nem Keq. Apenas reduz a Ea fornecendo um caminho alternativo.
+
+**Mecanismo simplificado:**
+- Sem catalisador: A → Produto (com Ea grande)
+- Com catalisador: A + C → AC (intermediário); AC → Produto + C (Ea menor em cada etapa)
+
+O catalisador **regenera** ao final, voltando à forma original.
+
+### Tipos de catálise
+
+- **Homogênea:** catalisador na mesma fase dos reagentes (ex.: ácido em solução acelerando hidrólise de éster).
+- **Heterogênea:** catalisador em fase diferente. Exemplo clássico: **MnO₂ sólido decompondo H₂O₂ aquoso**.
+
+### Catalisador vs intermediário — diferença crucial
+
+> *(Da lista Quimexp) O mecanismo seguinte foi proposto para a destruição da camada de ozônio por CFCs:*
+> 
+> *Etapa 1: O₃ + Cl → ClO + O₂*
+> *Etapa 2: ClO + O → Cl + O₂*
+> *Soma global: O₃ + O → 2 O₂*
+> 
+> *Identifique intermediário e catalisador.*
+
+**Análise:**
+- O Cl entra na etapa 1 e **sai novamente** na etapa 2 → não foi consumido na reação global → **catalisador**.
+- ClO é **gerado** na etapa 1 e **consumido** na etapa 2 — não aparece na reação global → **intermediário**.
+
+**Regra:**
+- **Catalisador:** aparece como reagente em uma etapa e como produto em outra (volta ao final).
+- **Intermediário:** aparece como produto de uma etapa e reagente da seguinte (efêmero, não aparece na reação global).
+
+---
+
+## 3.11 Mecanismo de reação — etapa determinante
+
+A maioria das reações químicas globais não acontece em uma única colisão. São **somas de várias etapas elementares**. A **etapa determinante** (ou etapa lenta, ou etapa limitante) é a mais lenta — ela controla a velocidade global, da mesma forma que o ponto mais estreito de uma estrada controla o fluxo de carros.
+
+### Caso 1: primeira etapa é a determinante
+
+```
+Etapa 1 (lenta):   A + B → C + I       (k₁)
+Etapa 2 (rápida):  A + I → D            (k₂)
+___________________________________________
+Soma global:       2A + B → C + D
+```
+
+Como a velocidade global é controlada pela etapa lenta:
+$$v = k_1 [A][B]$$
+
+A reação é de 1ª ordem em A e 1ª em B (apesar do coeficiente 2 do A na equação global).
+
+### Caso 2: segunda etapa é a determinante (envolvendo intermediário)
+
+```
+Etapa 1 (rápida, equilíbrio):  A + B ⇌ I       (k₁ direta, k₋₁ inversa)
+Etapa 2 (lenta):               A + I → C + D   (k₂)
+```
+
+**Velocidade da etapa 2:** v = k₂ · [A] · [I]
+
+Mas [I] não pode aparecer na lei de velocidade — não é uma espécie observável. Usamos a **aproximação do pré-equilíbrio**: como a etapa 1 é rápida em ambos os sentidos, ela está perto do equilíbrio:
+
+v_direta_etapa1 = v_inversa_etapa1
+k₁ · [A][B] = k₋₁ · [I]
+[I] = (k₁/k₋₁) · [A][B]
+
+Substituindo:
+$$v = k_2 \cdot \frac{k_1}{k_{-1}} [A]^2 [B]$$
+
+Ou, definindo k_obs = k₂·k₁/k₋₁:
+$$v = k_{obs} \cdot [A]^2 [B]$$
+
+Reação de 3ª ordem global!
+
+### Exemplo (Quimexp): mecanismo NO + Br₂
+
+> *NO + Br₂ → NOBr₂ (lenta)*
+> *NOBr₂ + NO → 2 NOBr (rápida)*
+> 
+> *Escreva a lei de velocidade.*
+
+A primeira etapa é a lenta (determinante):
+**v = k · [NO] · [Br₂]**
+
+Reação de 1ª ordem em NO, 1ª ordem em Br₂, 2ª ordem global.
+
+(Note que se a 1ª etapa fosse rápida e a 2ª lenta, o NOBr₂ seria intermediário e teríamos que aplicar pré-equilíbrio.)
+
+---
+
+## 3.12 Experimentos clássicos de cinética em laboratório
+
+### 3.12.1 Reação de Landolt ("relógio de iodo")
+
+**Objetivo:** estudar a ordem de uma reação medindo o tempo até o aparecimento de cor.
+
+**Reações envolvidas:**
+
+```
+(1) IO₃⁻ + 3 HSO₃⁻ → I⁻ + 3 SO₄²⁻ + 3 H⁺   (LENTA — determinante)
+(2) IO₃⁻ + 5 I⁻ + 6 H⁺ → 3 I₂ + 3 H₂O      (lenta)
+(3) I₂ + HSO₃⁻ + H₂O → 2 I⁻ + SO₄²⁻ + 3 H⁺  (RÁPIDA)
+```
+
+**O truque experimental:** enquanto houver HSO₃⁻ no sistema, a reação (3) consome o I₂ assim que ele é formado. Quando o HSO₃⁻ se esgota, o I₂ se acumula e forma o complexo azul-violeta com o amido. **O tempo até o aparecimento da cor é proporcional ao inverso da velocidade.**
+
+**Procedimento típico:** prepare 4 béqueres com diferentes concentrações iniciais de HSO₃⁻ (mantendo [IO₃⁻] constante), adicione amido e meça o tempo até a cor azul aparecer.
+
+**Dados típicos de exemplo:**
+
+| Béquer | [HSO₃⁻]₀ (relativa) | Tempo (s) |
+|---|---|---|
+| A | c | 5,21 |
+| B | c/2 | 16,04 |
+| C | c/4 | 44,42 |
+| D | c/8 | 180,07 |
+
+**Análise:**
+v ∝ 1/tempo. Comparando A e B:
+v_A / v_B = (1/5,21) / (1/16,04) = 16,04/5,21 ≈ 3,08
+[HSO₃⁻]_A / [HSO₃⁻]_B = 2
+
+Se v = k · [HSO₃⁻]^x → 3,08 = 2^x → log 3,08 = x · log 2 → **x ≈ 1,62**
+
+(Note: o resultado real depende dos dados. Esses são exemplos. Em prova, calcule com os números fornecidos.)
+
+**Por que essa reação é didática?** O tempo de reação é facilmente mensurável a olho nu (cor). Não exige equipamento sofisticado.
+
+**Erros experimentais possíveis:**
+- Diluição imprecisa das soluções → ordens "estranhas".
+- Temperatura variando entre as réplicas → k muda → tempos não comparáveis.
+- Ler o tempo em momentos diferentes da mudança de cor (a cor não muda instantaneamente — é um espectro).
+- Agitação inadequada → mistura ineficaz → tempo medido é maior que o real.
+
+### 3.12.2 Decomposição do peróxido de hidrogênio (efeito de catalisador)
+
+**Reação:** 2 H₂O₂ → 2 H₂O + O₂
+
+**Procedimento:** em um tubo de ensaio, coloque H₂O₂ em solução. A solução é estável (baixa velocidade). Adicione um pouco de **MnO₂ sólido**. Observa-se efervescência intensa (liberação de O₂).
+
+**Interpretação:**
+- Termodinamicamente: ΔG < 0 (espontânea). A decomposição "deveria" acontecer.
+- Cineticamente: Ea grande à temperatura ambiente → velocidade desprezível.
+- O MnO₂ é um **catalisador heterogêneo** que reduz Ea, acelerando dramaticamente.
+- O MnO₂ não é consumido — pode ser recuperado.
+
+**Erro comum em prova:** dizer que o MnO₂ "deslocou o equilíbrio". ERRADO. Catalisador não muda equilíbrio nem ΔH; só acelera.
+
+### 3.12.3 Reação de sódio metálico com solventes próticos (ordem de reatividade)
+
+**Reações:**
+```
+2 Na + 2 H₂O   → 2 NaOH + H₂↑   (vigorosíssima)
+2 Na + 2 EtOH  → 2 NaOEt + H₂↑  (moderada)
+2 Na + 2 iPrOH → 2 NaOiPr + H₂↑ (lenta)
+```
+
+**Interpretação:** a velocidade depende da acidez do próton OH:
+- Água: pKa ≈ 15,7
+- Etanol: pKa ≈ 16
+- Isopropanol: pKa ≈ 17
+
+Quanto **mais ácido** o próton OH, **mais rápida** a reação com Na. Isto reflete a estabilidade da base conjugada (alkóxido) — alkóxidos secundários são desestabilizados pelos grupos alquila doadores de elétrons (efeito indutivo).
+
+**Boa prática de laboratório:** Na metálico é altamente reativo com água. Sempre manuseie com pinça (nunca com dedos), corte sob óleo mineral, e descarte resíduos com cuidado (queimar com etanol em ambiente controlado).
+
+### 3.12.4 Permanganato (KMnO₄) — efeito do meio reacional
+
+A redução do MnO₄⁻ depende fortemente do pH:
+
+- **Meio ácido:** MnO₄⁻ + 8 H⁺ + 5 e⁻ → Mn²⁺ + 4 H₂O (incolor; redução de Mn⁷⁺ a Mn²⁺)
+- **Meio neutro:** MnO₄⁻ + 2 H₂O + 3 e⁻ → MnO₂(s) + 4 OH⁻ (precipitado marrom; Mn⁴⁺)
+- **Meio básico:** MnO₄⁻ + 1 e⁻ → MnO₄²⁻ (verde; Mn⁶⁺)
+
+**Experimento didático:** adicione cristais de Na₂SO₃ a três tubos com KMnO₄ em meios diferentes (ácido, neutro, básico). Observa-se cores distintas, refletindo o produto final.
+
+**Balanceamento clássico (meio ácido):**
+
+Semi-reação de redução: MnO₄⁻ + 8H⁺ + 5e⁻ → Mn²⁺ + 4H₂O (×2)
+Semi-reação de oxidação: SO₃²⁻ + H₂O → SO₄²⁻ + 2H⁺ + 2e⁻ (×5)
+
+Soma: 2 MnO₄⁻ + 16 H⁺ + 5 SO₃²⁻ + 5 H₂O → 2 Mn²⁺ + 8 H₂O + 5 SO₄²⁻ + 10 H⁺
+
+Simplificando: **2 MnO₄⁻ + 5 SO₃²⁻ + 6 H⁺ → 2 Mn²⁺ + 5 SO₄²⁻ + 3 H₂O**
+
+### 3.12.5 Efeito da temperatura na reação MnO₄⁻ + C₂O₄²⁻
+
+**Reação:** 2 MnO₄⁻ + 5 C₂O₄²⁻ + 16 H⁺ → 2 Mn²⁺ + 10 CO₂ + 8 H₂O
+
+**Procedimento:** prepare dois tubos idênticos, mas mantenha um em água gelada e outro em temperatura ambiente. Compare o tempo de descoramento do MnO₄⁻ (violeta → incolor).
+
+**Resultado esperado:** o tubo aquecido descora muito mais rápido, demonstrando a relação k ∝ e^(–Ea/RT) (Arrhenius).
+
+**Curiosidade cinética:** essa reação tem **autocatálise**! O Mn²⁺ formado catalisa a próxima oxidação do oxalato. Por isso o descoramento parece "engatar" depois de um período inicial mais lento.
+
+---
+
+## 3.13 Como interpretar questões típicas de Cinética
+
+### Tipo 1: identificar ordem a partir de dados
+
+Use o método das velocidades iniciais. Sempre compare experimentos onde **só uma concentração varia**.
+
+### Tipo 2: integrar e calcular k para 1ª ordem
+
+Use **ln[A] = ln[A]₀ – kt** ou **t₁/₂ = 0,693/k**.
+
+> *Numa reação de 1ª ordem, [A] cai à metade em 1.000 s. Calcule k.*
+> 
+> t₁/₂ = 1000 s → k = 0,693/1000 = **6,93 × 10⁻⁴ s⁻¹**
+
+### Tipo 3: identificar intermediários e catalisadores em mecanismos
+
+Compare cada espécie nas etapas:
+- Aparece como reagente em uma etapa e produto em outra → **catalisador** (se for *recriado* no final).
+- Aparece como produto em uma etapa e reagente em outra (sem aparecer no global) → **intermediário**.
+
+### Tipo 4: escrever lei de velocidade a partir de mecanismo
+
+- Se a primeira etapa é a lenta: a lei de velocidade é a velocidade da primeira etapa, com [reagentes da primeira etapa] e seus expoentes (= coeficientes da etapa elementar).
+- Se a etapa lenta vem após uma rápida com intermediário: aplique pré-equilíbrio para eliminar o intermediário.
+
+### Tipo 5: cálculos com Arrhenius
+
+Use a forma logarítmica: ln(k₂/k₁) = (Ea/R)(1/T₁ – 1/T₂).
+Lembre: T em Kelvin; R em J/(K·mol); Ea sai em J/mol → divida por 1000 para kJ/mol.
+
+---
+
+## 3.14 Erros comuns em Cinética
+
+1. **Usar coeficientes estequiométricos como ordens.** Só vale para etapas elementares! Em geral, expoentes vêm de experimento.
+2. **Esquecer o sinal negativo na velocidade de consumo de reagentes.** v = –d[A]/dt para reagente; +d[C]/dt para produto.
+3. **Aplicar t₁/₂ = 0,693/k para reações que não são de 1ª ordem.** Esta fórmula **só vale** para 1ª ordem.
+4. **Confundir catalisador com intermediário.** Catalisador entra e sai (regenerado); intermediário é gerado e consumido.
+5. **Esquecer que catalisador NÃO altera Keq, ΔH, ΔG.** Catalisador só acelera (ou retarda, no caso de inibidores) — equilíbrio final é o mesmo.
+6. **Não converter T para Kelvin em Arrhenius.** Sempre converter °C → K (somar 273,15).
+7. **Não verificar unidades de k.** As unidades dependem da ordem e devem fazer v sair em mol/(L·s) ou similar.
+
+---
+
 # PARTE 4 — EQUILÍBRIO QUÍMICO
 
 ## 4.1 Por que estudamos isto?
